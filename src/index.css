@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'SFUIDisplay-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/SFUIDisplay-Regular.otf?#iefix'); /* IE 9 Comp. Modes */
+  src:
+    local(''),
+    url('./fonts/SFUIDisplay-Regular.otf') format('embedded-opentype'),
+    url('./fonts/SFUIDisplay-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Montserrat-Regular.ttf?#iefix'); /* IE 9 Comp. Modes */
+  src:
+    local(''),
+    url('./fonts/Montserrat-Regular.ttf') format('embedded-truetype'),
+    url('./fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Montserrat-SemiBold.ttf'); /* IE 9 Comp. Modes */
+  src:
+    local(''),
+    url('./fonts/Montserrat-SemiBold.ttf') format('embedded-truetype'),
+    url('./fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Montserrat-Bold.ttf'); /* IE 9 Comp. Modes */
+  src:
+    local(''),
+    url('./fonts/Montserrat-Bold.ttf') format('embedded-truetype'),
+    url('./fonts/Montserrat-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-ExtraBold';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Montserrat-ExtraBold.ttf'); /* IE 9 Comp. Modes */
+  src:
+    local(''),
+    url('./fonts/Montserrat-ExtraBold.ttf') format('embedded-truetype'),
+    url('./fonts/Montserrat-ExtraBold.ttf') format('truetype');
+}
+
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
