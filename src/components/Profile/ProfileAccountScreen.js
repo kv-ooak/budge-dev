@@ -8,12 +8,17 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import FormGroup from '@material-ui/core/FormGroup';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
@@ -21,6 +26,7 @@ import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 
 import CustomButton from '../../_reusable/UI/CustomButton';
 import CustomInputBoxWithHelper from '../../_reusable/UI/CustomInputBoxWithHelper';
+import EditIcon from '@material-ui/icons/Edit';
 
 import { updateUsername } from '../../redux/actions/userActions';
 
@@ -34,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     position: 'relative',
-    width: '85%',
+    width: '85%',  marginTop: theme.spacing(8),
   },
   form: {
     position: 'relative',
@@ -96,6 +102,38 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.body1,
     color: theme.palette.error.light,
   },
+
+  userIcon: {
+    backgroundColor: theme.palette.green[500],
+    color: '#ffffff',
+    border: '1px solid',
+    fontFamily: '"Montserrat-ExtraBold", sans-serif',
+    height: theme.spacing(18),
+    width: theme.spacing(18),
+  },
+  username: {
+    fontFamily: '"Montserrat-Bold", sans-serif',
+    color: theme.palette.grey[700],
+    fontSize: theme.typography.h6.fontSize,
+  },
+  teamName: {
+    fontFamily: '"Montserrat-Bold", sans-serif',
+    color: theme.palette.green[500],
+    fontSize: theme.typography.h6.fontSize,
+  },
+  pad0: { paddingLeft: 0, },
+  boxAvtar: {
+    marginRight: theme.spacing(4),
+    height: 72, width: 72, position: 'relative'
+  },
+  buttonEdit: {
+    position: 'absolute',  bottom: 0, right: 0, border: 0, outline: 'none', cursor: 'pointer',
+    '&>span':{ borderRadius: '60%', height: 30, width: 30, backgroundColor: '#DFDFDF !important',},
+    '& svg': {
+      width: '.8em', color: theme.palette.green[500],
+    }
+  },
+  fileinput: { display: 'none' }
 }));
 
 function ProfileAccountScreen() {
@@ -193,6 +231,11 @@ function ProfileAccountScreen() {
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(null);
 
+
+  const [imagePreviewUrl, setImgPreview] = useState();
+  const [file, setFile] = useState(null);
+
+
   console.log(loading, error);
 
   const action = (type, payload) => ({
@@ -280,6 +323,14 @@ function ProfileAccountScreen() {
     };
   }, [state.username, state.email, state.password]);
 
+
+  const handleImageUPload = (e) => {
+    let file = e.target.files[0];
+    setImgPreview(URL.createObjectURL(file))
+    setFile(file)
+  }
+
+
   return (
     <>
       <Container className={classes.paper} component="main" maxWidth="xs">
@@ -288,6 +339,39 @@ function ProfileAccountScreen() {
           <ArrowBackOutlinedIcon className={classes.backButtonIcon} />
         </IconButton>
         <Grid container className={classes.container} spacing={2} direction="column" alignContent="center">
+
+          <ListItem className={classes.pad0}>
+            <ListItemAvatar>
+              <Box className={classes.boxAvtar}>
+                <Avatar
+                  alt={currentUser.username}
+                  src={imagePreviewUrl}
+                  className={classes.userIcon}
+                />
+                <form encType="multipart/form-data">
+                  <input accept="image/*" className={classes.fileinput} id="icon-button-file" type="file" onChange={handleImageUPload} />
+                  <label htmlFor="icon-button-file" className={classes.buttonEdit}>
+                    <IconButton color="primary" aria-label="upload picture" component="span">
+                      <EditIcon />
+                    </IconButton>
+                  </label>
+                </form>
+              </Box>
+            </ListItemAvatar>
+            <ListItemText
+              primary={(
+                <Typography className={classes.username}>
+                  Nik
+                </Typography>
+              )}
+              secondary={(
+                <Typography className={classes.teamName}>
+                  Team:
+                </Typography>
+              )}
+            />
+          </ListItem>
+
           <FormGroup className={classes.form} noValidate>
             <Typography className={classes.information}>
               Andere Nutzer innerhalb Deines Teams können sehen,
@@ -331,7 +415,7 @@ function ProfileAccountScreen() {
                       <RemoveRedEye onClick={() => setShowCurrentPassword(!showCurrentPassword)} />
                     </InputAdornment>
                   </Tooltip>
-              )}
+                )}
                 error={Boolean(state.currentPassword.error)}
                 onFocus={() => setFocusCurrentPassword(true)}
                 isfocus={focusCurrentPassword.toString()}
@@ -358,7 +442,7 @@ function ProfileAccountScreen() {
                       <RemoveRedEye onClick={() => setShowPassword(!showPassword)} />
                     </InputAdornment>
                   </Tooltip>
-              )}
+                )}
                 error={Boolean(state.password.error)}
                 onFocus={() => setFocusPassword(true)}
                 isfocus={focusPassword.toString()}
@@ -373,13 +457,13 @@ function ProfileAccountScreen() {
             </Grid>
 
             {(error === null && success === null && (loading === false || loading === null)) && (
-            <CustomButton
-              type="button"
-              className={classes.submit}
-              onClick={handleFormSubmit}
-            >
-              Speichern
-            </CustomButton>
+              <CustomButton
+                type="button"
+                className={classes.submit}
+                onClick={handleFormSubmit}
+              >
+                Speichern
+              </CustomButton>
             )}
 
             {loading === true && (

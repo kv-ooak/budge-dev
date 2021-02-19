@@ -63,6 +63,16 @@ const listItemData = [
     name: 'Account & Privatsphäre',
     headline: 'Benutzername & Passwort ändern',
   },
+  {
+    id: 'profilequellen',
+    name: 'Unsere Quellen & Partner',
+    headline: 'Durchstöbere unsere Datenquellen',
+  },
+  {
+    id: 'account',
+    name: 'Hilfe & Kontakt',
+    headline: 'Fragen und Hilfe',
+  },
 
   {
     id: 'signout',
@@ -90,14 +100,14 @@ export default function ProfileScreen() {
     setCurrentScreen(id);
   };
 
-  if (currentScreen === 'signout') {
-    firebase.auth().signOut().then(() => {
-      history.push('/signin');
-    }, (e) => {
-      setError(e.message);
-      console.log(error);
-    });
-  }
+  // if (currentScreen === 'signout') {
+  //   firebase.auth().signOut().then(() => {
+  //     history.push('/signin');
+  //   }, (e) => {
+  //     setError(e.message);
+  //     console.log(error);
+  //   });
+  // }
 
   if (currentScreen === 'account') {
     history.push('/profile/account');
@@ -113,7 +123,7 @@ export default function ProfileScreen() {
             src="/static/images/avatar/default.png"
             className={classes.userIcon}
           />
-        </ListItemAvatar>
+        </ListItemAvatar>   
         <ListItemText
           primary={(
             <Typography className={classes.username}>
@@ -139,6 +149,8 @@ export default function ProfileScreen() {
             >
               <ListItemIcon className={classes.icon}>
                 {item.id === 'account' && <AccountCircleOutlinedIcon /> }
+                {item.id === 'profilequellen' && <ExitToAppOutlinedIcon /> }
+                {item.id === 'helpandcontact' && <ExitToAppOutlinedIcon /> }
                 {item.id === 'signout' && <ExitToAppOutlinedIcon /> }
               </ListItemIcon>
               <ListItemText
