@@ -116,7 +116,7 @@ function ContactScreen() {
         <IconButton className={classes.backButton} aria-label="back" onClick={() => history.push('helpandcontact')}>
           <ArrowBackOutlinedIcon className={classes.backButtonIcon} />
         </IconButton>
-        <Typography component='h2' className={classes.pageTitle}>FAQ</Typography>
+        <Typography component='h2' className={classes.pageTitle}>Kontakt</Typography>
         <Grid container className={classes.container} spacing={2} direction="column" alignContent="center">
             <List
               component="nav"
