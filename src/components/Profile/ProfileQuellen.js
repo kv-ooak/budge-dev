@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pad0: { paddingLeft: 0, },
   pageTitle:{color: theme.palette.green[500], fontSize:18, fontWeight:600,letterSpacing:1,
-    width: '100%', textAlign:'center', borderBottom: '0.2px solid #96A2AC', paddingBottom:20, marginBottom: 20,
+    width: '100%', textAlign:'center', borderBottom:'0.5px solid #D2DBCE', paddingBottom:20, marginBottom: 20,
   },
   listBoxCont:{width:'100%'},
   titleTxt:{fontSize:18, color:'#000', padding:0},
