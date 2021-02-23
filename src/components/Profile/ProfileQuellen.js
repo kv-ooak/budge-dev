@@ -112,7 +112,7 @@ function ProfileQuellen() {
         <IconButton className={classes.backButton} aria-label="back" onClick={() => history.push('./')}>
           <ArrowBackOutlinedIcon className={classes.backButtonIcon} />
         </IconButton>
-        <Typography component='h2' className={classes.pageTitle}>Unsere Quellen & Partner</Typography>
+        <Typography component='h2' className={classes.pageTitle}>Unsere Quellen</Typography>
         <Grid container className={classes.container} spacing={2} direction="column" alignContent="center">
             <List
               component="nav"
@@ -132,7 +132,7 @@ function ProfileQuellen() {
                 <ListItemText className={classes.listBoxTxt} primary="Berechnungen Bäume" />
               </ListItem>
               <ListItem button className={classes.listBox}>
-                <ListItemText className={classes.listBoxTxt} primary="Berechnungen Ersparnisse" />
+                <ListItemText className={classes.listBoxTxt} primary="Berechnung Badewannen" />
               </ListItem>
             </List>
         </Grid>

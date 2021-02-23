@@ -65,7 +65,7 @@ const listItemData = [
   },
   {
     id: 'profilequellen',
-    name: 'Unsere Quellen & Partner',
+    name: 'Unsere Quellen',
     headline: 'Durchstöbere unsere Datenquellen',
   },
   {

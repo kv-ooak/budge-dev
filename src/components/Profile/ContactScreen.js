@@ -18,6 +18,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
 import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/Phone';
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -107,7 +110,9 @@ const useStyles = makeStyles((theme) => ({
 function ContactScreen() {
   const classes = useStyles();
   const history = useHistory();
-
+  const onMailClick=()=>{
+    window.location.href = `mailto:niklas@budge-app.com`;
+  }
 
   return (
     <>
@@ -127,11 +132,20 @@ function ContactScreen() {
             >
               <ListItem button className={classes.listBox}>
                 <ListItemIcon className={classes.icon}>
+                    <PhoneIcon /> 
+                </ListItemIcon>
+                <ListItemText
+                    primary={<Typography className={classes.itemName}>Handynummer</Typography>}
+                    secondary='+49 163 2971 937'
+                />
+              </ListItem>
+              <ListItem button className={classes.listBox} onClick={onMailClick}>
+                <ListItemIcon className={classes.icon}>
                     <EmailIcon /> 
                 </ListItemIcon>
                 <ListItemText
-                    primary={<Typography className={classes.itemName}>Email</Typography>}
-                    secondary='Sende uns eine Email'
+                    primary={<Typography className={classes.itemName}>E-Mail</Typography>}
+                    secondary='Sende uns eine E-Mail'
                 />
               </ListItem>
             </List>
